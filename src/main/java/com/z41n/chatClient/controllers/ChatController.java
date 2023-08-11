@@ -22,7 +22,7 @@ public class ChatController {
     @MessageMapping("/chat.addUser") // URL we want to use to invoke this function
     @SendTo("/topic/public")
     public ChatPayload addUser(@Payload ChatPayload payload, SimpMessageHeaderAccessor headerAccessor) {
-        headerAccessor.getSessionAttributes().put("userName", payload.getMSenderName());
+        headerAccessor.getSessionAttributes().put("username", payload.getMSenderName());
         return payload;
     }
 
