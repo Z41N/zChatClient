@@ -7,6 +7,8 @@ import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.stereotype.Controller;
 
+import java.util.Objects;
+
 @Controller
 public class ChatController {
 
@@ -22,7 +24,7 @@ public class ChatController {
     @MessageMapping("/chat.addUser") // URL we want to use to invoke this function
     @SendTo("/topic/public")
     public ChatPayload addUser(@Payload ChatPayload payload, SimpMessageHeaderAccessor headerAccessor) {
-        headerAccessor.getSessionAttributes().put("username", payload.getMSenderName());
+        Objects.requireNonNull(headerAccessor.getSessionAttributes()).put("username", payload.getSender());
         return payload;
     }
 
