@@ -9,9 +9,9 @@ import lombok.*;
 @Builder
 public class ChatPayload {
 
-    private String mMessageContent;
-    private String mSenderName;
-    private MessageType mMessageType;
+    private MessageType type;
+    private String content;
+    private String sender;
 
 
 
